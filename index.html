@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="./styles.css">
+    <title>Chat</title>
+</head>
+
+<body>
+    <main>
+        <h1> Chat App</h1>
+
+        <section id="msg_history">
+            <div class="msg_container_mymessage">
+                <p class="msg_time">03:36</p>
+                <p class="msg_user">Leonardo Rissato</p>
+                <p class="msg_text">LALALALALA</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:36</p>
+                <p class="msg_user">Beltrano da Silva</p>
+                <p class="msg_text">Someone there?</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:43</p>
+                <p class="msg_user">teste</p>
+                <p class="msg_text">alguma coisa</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:47</p>
+                <p class="msg_user">teste</p>
+                <p class="msg_text">nada</p>
+            </div>
+            <div class=" msg_container_mymessage">
+                <p class="msg_time">03:49</p>
+                <p class="msg_user">Lavaca</p>
+                <p class="msg_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque, deleniti nemo.
+                    Omnis repellat officia voluptas nulla libero odit id ex!</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:49</p>
+                <p class="msg_user">teste</p>
+                <p class="msg_text">cavalo</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:55</p>
+                <p class="msg_user">53w5</p>
+                <p class="msg_text">nada</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:56</p>
+                <p class="msg_user">usuario</p>
+                <p class="msg_text">teste</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:56</p>
+                <p class="msg_user">usuario</p>
+                <p class="msg_text">testebumero 123\</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:58</p>
+                <p class="msg_user">letara</p>
+                <p class="msg_text">nada</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:58</p>
+                <p class="msg_user">letara</p>
+                <p class="msg_text">fulano de tal</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">03:59</p>
+                <p class="msg_user">letara</p>
+                <p class="msg_text">alguem é doid</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">04:02</p>
+                <p class="msg_user">lalala</p>
+                <p class="msg_text">nada</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">04:02</p>
+                <p class="msg_user">lalala</p>
+                <p class="msg_text">check</p>
+            </div>
+            <div class="msg_container">
+                <p class="msg_time">04:02</p>
+                <p class="msg_user">lalala</p>
+                <p class="msg_text">jacaré</p>
+            </div>
+        </section>
+
+
+        <section class="msg_sender">
+            <input id="input_user" name="input_user" type="text" placeholder="User">
+
+            <div class="msg_submit_container">
+                <input id="input_msg" type="text" onkeydown="if(event.keyCode==13){sendMsg()}" placeholder="message...">
+                <button onclick="sendMsg()"></button>
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.6/firebase-database.js"></script>
+
+    <script src="./main.js"></script>
+
+
+</body>
+
+</html>
