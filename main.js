@@ -53,13 +53,12 @@ function gotData(data) {
     last_msg = msg_obj;
 
     if (usersassignedcolors[msg_obj.user] == undefined) {
-      console.log(msg_obj.user);
       usersassignedcolors[msg_obj.user] = getRandomColor();
     }
     var color = usersassignedcolors[msg_obj.user];
 
-    var msg_time = msg_obj.datetime.split("T")[1];
-    msg_time = msg_time.split(":")[0] + ":" + msg_time.split(":")[1];
+    var msg_datetime = new Date(msg_obj.datetime);
+    var msg_time = msg_datetime.getHours() + ":" + msg_datetime.getMinutes();
 
     var mymessage = false;
     if (input_username.value == msg_obj.user) {
@@ -151,7 +150,6 @@ function getRandomColor() {
   color += ",";
   color += ".3)";
 
-  console.log(color);
   return color;
 }
 
