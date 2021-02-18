@@ -17,6 +17,81 @@ main {
   grid-template-rows: 5vh 80vh 15vh;
 
   color: white;
+  user-select: none;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 50vw 30vw;
+  grid-template-rows: 1fr;
+  align-items: center;
+  height: 100%;
+}
+
+.appname {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.bigsoundcontainer {
+  display: flex;
+  width: 10em;
+  align-items: center;
+}
+
+.switchsound_container {
+  position: relative;
+  display: inline-block;
+  width: 4em;
+  height: 1.5em;
+  margin: auto;
+  outline: none;
+}
+
+.switchsound_container input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 0.9em;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.3em;
+  width: 1.3em;
+  left: 0.1em;
+  bottom: 0.1em;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #00f335;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(2.4em);
+  -ms-transform: translateX(2.4em);
+  transform: translateX(2.4em);
 }
 
 #msg_history {
@@ -94,6 +169,8 @@ main {
   text-align: left;
   margin-left: 5%;
   margin-top: 0.5em;
+
+  user-select: text;
 }
 
 .msg_sender {

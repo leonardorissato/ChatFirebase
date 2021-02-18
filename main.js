@@ -21,6 +21,7 @@ database_messages.on("value", gotData, errData);
 
 const message_history = document.getElementById("msg_history");
 const msg_received_audio = new Audio("./audio/msg_received.mp3");
+const switchsound = document.getElementById("switchsound");
 
 const input_username = document.getElementById("input_user");
 const input_msg = document.getElementById("input_msg");
@@ -70,8 +71,12 @@ function gotData(data) {
 
   //check if was this user that sent the message
   if (last_msg.user != input_username.value) {
-    msg_received_audio.play();
-    console.log(" notify user");
+    if (switchsound.checked == true) {
+      msg_received_audio.play();
+      console.log(" notify sound user");
+    } else {
+      console.log("mute");
+    }
   }
 }
 
@@ -151,8 +156,9 @@ function getRandomColor() {
 }
 
 function clicklogo() {
+  console.log("clicklogo - ", numberclicklogo);
   numberclicklogo += 1;
-  if ((numberclicklogo += 10)) {
+  if (numberclicklogo > 10) {
     swal({
       title: "Delete All Messages",
       text: "Once deleted, you will not be able to recover the messages!",
