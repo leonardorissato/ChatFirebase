@@ -90,7 +90,7 @@ function sendMsg() {
 
   if (username == "" || message == "") {
     console.log("Fill the Username and Message Fields");
-    swal("Fill Everything!", "You must fill the username and message fields", "warning");
+    swal("Write something!", "You must fill the username and message fields", "warning");
     return false;
   }
 
@@ -152,7 +152,7 @@ function getRandomColor() {
 
 function clicklogo() {
   numberclicklogo += 1;
-  if ((numberclicklogo += 3)) {
+  if ((numberclicklogo += 10)) {
     swal({
       title: "Delete All Messages",
       text: "Once deleted, you will not be able to recover the messages!",
