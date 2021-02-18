@@ -26,6 +26,7 @@ const input_username = document.getElementById("input_user");
 const input_msg = document.getElementById("input_msg");
 
 let usersassignedcolors = new Object();
+let numberclicklogo = 0;
 
 //get username from webstorage
 input_username.value = localStorage.getItem("user");
@@ -147,4 +148,26 @@ function getRandomColor() {
 
   console.log(color);
   return color;
+}
+
+function clicklogo() {
+  numberclicklogo += 1;
+  if ((numberclicklogo += 3)) {
+    swal({
+      title: "Delete All Messages",
+      text: "Once deleted, you will not be able to recover the messages!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        database_messages.remove();
+        swal("Poof! Messages Deleted!", {
+          icon: "success",
+        });
+      } else {
+        swal("Messages keep!");
+      }
+    });
+  }
 }
