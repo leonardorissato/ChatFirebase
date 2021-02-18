@@ -25,6 +25,8 @@ const msg_received_audio = new Audio("./audio/msg_received.mp3");
 const input_username = document.getElementById("input_user");
 const input_msg = document.getElementById("input_msg");
 
+let usersassignedcolors = new Object();
+
 //get username from webstorage
 input_username.value = localStorage.getItem("user");
 
@@ -40,12 +42,19 @@ function gotData(data) {
     console.log("void msgs at database");
     return false;
   }
+
   var msg_keys = Object.keys(all_msgs);
 
   var last_msg = null;
   msg_keys.forEach((key) => {
     var msg_obj = all_msgs[key];
     last_msg = msg_obj;
+
+    if (usersassignedcolors[msg_obj.user] == undefined) {
+      console.log(msg_obj.user);
+      usersassignedcolors[msg_obj.user] = getRandomColor();
+    }
+    var color = usersassignedcolors[msg_obj.user];
 
     var msg_time = msg_obj.datetime.split("T")[1];
     msg_time = msg_time.split(":")[0] + ":" + msg_time.split(":")[1];
@@ -54,7 +63,8 @@ function gotData(data) {
     if (input_username.value == msg_obj.user) {
       mymessage = true;
     }
-    addmessagetointerface(msg_time, msg_obj.user, msg_obj.msg, mymessage);
+
+    addmessagetointerface(msg_time, msg_obj.user, msg_obj.msg, mymessage, color);
   });
 
   //check if was this user that sent the message
@@ -94,11 +104,14 @@ function sendMsg() {
   database_messages.push(obj_msg).then((input_msg.value = ""));
 }
 
-function addmessagetointerface(time, user, msg, ismymessage) {
+function addmessagetointerface(time, user, msg, ismymessage, color) {
   var msg_container = document.createElement("div");
   msg_container.className = "msg_container";
+
   if (ismymessage) {
     msg_container.className = "msg_container_mymessage";
+  } else {
+    msg_container.style.backgroundColor = color;
   }
 
   var msg_time = document.createElement("p");
@@ -120,4 +133,18 @@ function addmessagetointerface(time, user, msg, ismymessage) {
   message_history.appendChild(msg_container);
 
   message_history.scrollTo(0, message_history.scrollHeight);
+}
+
+function getRandomColor() {
+  var color = "rgba(";
+  color += String(Math.floor(Math.random() * 255));
+  color += ",";
+  color += String(Math.floor(Math.random() * 255));
+  color += ",";
+  color += String(Math.floor(Math.random() * 255));
+  color += ",";
+  color += ".3)";
+
+  console.log(color);
+  return color;
 }
